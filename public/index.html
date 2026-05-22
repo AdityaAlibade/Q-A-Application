@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniQA - AI-Powered Question Answering System</title>
+  <!-- Google Fonts: Outfit for Headings, Inter for Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons for clean, modern look -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Gradients -->
+  <div class="bg-gradient-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="main-navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <i class="fa-solid fa-wand-magic-sparkles logo-icon animate-pulse"></i>
+        <span>Omni<span>QA</span></span>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#chat-section" class="nav-link">QA Assistant</a></li>
+        <li><a href="#features" class="nav-link">Architecture</a></li>
+      </ul>
+
+      <!-- Navbar Actions (Theme Toggle + Button) -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle light/dark mode" title="Toggle Mode">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+        <a href="#chat-section" class="btn btn-primary btn-sm">Launch App</a>
+        
+        <!-- Mobile Toggle Button -->
+        <button id="mobile-menu-toggle" class="btn-icon mobile-only" aria-label="Open navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-header">
+      <div class="nav-logo">
+        <i class="fa-solid fa-wand-magic-sparkles logo-icon"></i>
+        <span>Omni<span>QA</span></span>
+      </div>
+      <button id="mobile-menu-close" class="btn-icon" aria-label="Close navigation menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#hero" class="drawer-link">Home</a></li>
+      <li><a href="#chat-section" class="drawer-link">QA Assistant</a></li>
+      <li><a href="#features" class="drawer-link">Architecture</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="#chat-section" class="btn btn-primary btn-full">Get Started</a>
+    </div>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Hero Section -->
+    <header class="section hero" id="hero">
+      <div class="hero-content">
+        <div class="badge animate-fade-in">
+          <span class="badge-dot"></span> Powered by Gemini 2.5 Flash
+        </div>
+        <h1 class="hero-title animate-slide-up">
+          Automatic Question Answering <span class="gradient-text">Redefined.</span>
+        </h1>
+        <p class="hero-subtitle animate-slide-up">
+          An production-grade assistant offering ultra-low latency, full conversational context retention, and a highly polished dark-glass user interface. Ask anything, get instant solutions.
+        </p>
+        <div class="hero-buttons animate-slide-up">
+          <a href="#chat-section" class="btn btn-primary btn-lg">
+            Start Asking <i class="fa-solid fa-arrow-right btn-icon-right"></i>
+          </a>
+          <a href="#features" class="btn btn-secondary btn-lg">
+            System Stack
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Chat/QA Section -->
+    <section class="section chat-section" id="chat-section">
+      <div class="container">
+        
+        <div class="chat-wrapper">
+          <!-- Glassmorphic Chat Box -->
+          <div class="chat-container glass">
+            
+            <!-- Chat Header -->
+            <div class="chat-header">
+              <div class="chat-header-info">
+                <div class="status-indicator">
+                  <span class="status-dot pulsing"></span>
+                  <span class="status-text" id="system-status">Assistant Online</span>
+                </div>
+              </div>
+              <div class="chat-header-actions">
+                <button id="clear-chat" class="btn-icon btn-danger-hover" title="Clear conversation" aria-label="Clear chat history">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div class="chat-messages" id="chat-messages">
+              <!-- Empty State Welcome View -->
+              <div class="chat-empty-state" id="chat-empty-state">
+                <div class="empty-icon-wrapper">
+                  <i class="fa-solid fa-comments"></i>
+                </div>
+                <h2>What would you like to explore today?</h2>
+                <p>Type your query below or pick a sample question to test the system integration and output response.</p>
+                
+                <div class="suggested-grid">
+                  <button class="suggested-card" data-prompt="Explain the difference between SQL and NoSQL databases in simple terms.">
+                    <span class="card-icon"><i class="fa-solid fa-database"></i></span>
+                    <span class="card-title">SQL vs NoSQL</span>
+                    <span class="card-desc">Explain key concepts and schemas.</span>
+                  </button>
+                  <button class="suggested-card" data-prompt="Write a clean, modular JavaScript function to debounce an input event handler.">
+                    <span class="card-icon"><i class="fa-solid fa-code"></i></span>
+                    <span class="card-title">Debounce Function</span>
+                    <span class="card-desc">Write JavaScript code with explanations.</span>
+                  </button>
+                  <button class="suggested-card" data-prompt="What are some best practices for designing a secure REST API?">
+                    <span class="card-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                    <span class="card-title">REST API Security</span>
+                    <span class="card-desc">Review design paradigms and headers.</span>
+                  </button>
+                  <button class="suggested-card" data-prompt="How does asymmetric cryptography work under the hood?">
+                    <span class="card-icon"><i class="fa-solid fa-key"></i></span>
+                    <span class="card-title">Asymmetric Crypto</span>
+                    <span class="card-desc">Describe public & private key mechanics.</span>
+                  </button>
+                </div>
+              </div>
+              <!-- Dynamic message bubbles will be injected here -->
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="chat-input-wrapper">
+              <form id="chat-form" class="chat-form">
+                <div class="textarea-container">
+                  <textarea 
+                    id="chat-input" 
+                    placeholder="Ask a question..." 
+                    rows="1" 
+                    maxlength="4000"
+                    aria-label="Ask your question here"
+                  ></textarea>
+                  <div class="chat-char-counter" id="char-counter">0 / 4000</div>
+                </div>
+                <button type="submit" id="send-btn" class="btn btn-send" aria-label="Send message">
+                  <i class="fa-solid fa-paper-plane send-icon"></i>
+                  <i class="fa-solid fa-circle-notch loading-icon spin"></i>
+                </button>
+              </form>
+              <div class="chat-input-footer">
+                <span>Press Enter to Send, Shift+Enter for newline</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Architecture & Features Section -->
+    <section class="section features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Robust Product Architecture</h2>
+          <p class="section-subtitle">Developed by <span class="dev-name">AYUSH POTDAR</span> &bull; A clean design utilizing decoupled clients and proxy middleware servers to establish reliable, secure, and performant AI services.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <div class="feature-card glass">
+            <div class="feature-icon"><i class="fa-brands fa-node-js"></i></div>
+            <h3>Express Proxy Server</h3>
+            <p>Node.js backplane coordinates communications. Validates inputs, handles server-side config caching, and encapsulates API requests so keys remain hidden from users.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="feature-card glass">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Rate Limit & Security</h3>
+            <p>Integrated middleware blocks DDoS attempts and repetitive API abuse using modern rate limiting, alongside standard HTTP response headers protecting against XSS.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="feature-card glass">
+            <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Gemini 2.5 Flash</h3>
+            <p>Leverages ultra-fast inference through OpenRouter. Retrieves rich, markdown-compatible responses to resolve queries with low latency and optimal response accuracy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2026 OmniQA. Developed by <span class="dev-name">AYUSH POTDAR</span>. Built with HTML5, CSS3, Vanilla JS, and Node.js.</p>
+      <div class="footer-links">
+        <a href="#hero">Back to Top</a>
+        <span>&bull;</span>
+        <a href="https://openrouter.ai" target="_blank" rel="noopener">OpenRouter AI</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
